@@ -122,9 +122,16 @@
               "devServerTarget": "pizzaria:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
   },
-  "defaultProject": "pizzaria"
+  "defaultProject": "pizzaria",
+  "cli": {
+    "analytics": false
+  }
 }

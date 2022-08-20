@@ -30,10 +30,10 @@ export class PedidoDialogComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {});
 
     this.transactions.forEach(obj => {
-      pedido += `*${obj.item}* -> R$${obj.price}\n`;
+      pedido += `*${obj.item}* -> $${obj.price}\n`;
     });
 
-    pedido += `*Total:* R$${this.getTotalPrice()}`;
+    pedido += `*Total:* $${this.getTotalPrice()}`;
 
     let pedidoURI = encodeURIComponent(pedido);
 

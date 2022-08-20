@@ -28,12 +28,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { PedidoDialogComponent } from './components/template/pedido/pedido-dialog/pedido-dialog.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
-import { PedidoFormComponent } from './components/template/pedido/pedido-form/pedido-form.component'
+import { PedidoFormComponent } from './components/template/pedido/pedido-form/pedido-form.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+
+
+
+
 
 registerLocaleData(localePt);
 
@@ -67,11 +75,14 @@ registerLocaleData(localePt);
     FormsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    
   ],
   providers: [{
       provide: LOCALE_ID,
-      useValue: 'pt-BR'
+      useValue: 'pt-BR',
+    
     }
   ],
   bootstrap: [AppComponent]
