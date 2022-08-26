@@ -15,6 +15,7 @@ export class ContentComponent implements OnInit {
   bebidasArray: any[] = [];
   comidaArray: any[] = [];
   arrayBebida: any[] = [];
+  arrayEntrega: any[]=[];
 
   constructor(private produtosService: ProdutosService, private pedidoService: PedidoService) { }
 
@@ -22,6 +23,7 @@ export class ContentComponent implements OnInit {
     this.getPizzas();
     this.getComida();
     this.getBebidaFb();
+    this.getEntrega();
   }
 
   getPizzas() {
@@ -71,5 +73,21 @@ export class ContentComponent implements OnInit {
       }
     });
   }
+  getEntrega(){
+    this.produtosService.getEntrega().subscribe((res: any) => {
+      res.forEach((entrega: any) => this.arrayEntrega.push(entrega.payload.doc.data()));
+      console.log(this.arrayEntrega[0])
+    })
+  }
+
+  addEntregaPedido(id:number){
+    this.arrayEntrega.forEach((value)=>{
+      if(value.id === id){
+        this.pedidoService.getPedidoValues(value.name, value.price);
+        this.pedidoService.openSnackBar('Item adicionado');
+      }
+    })
+  }
+
 }
 

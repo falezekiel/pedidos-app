@@ -83,6 +83,49 @@
     </div>
 
   </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">directions_bike</mat-icon>
+      Entrega
+    </ng-template>
+    
+
+    <div fxLayout="row wrap" fxLayoutAlign="start center" style="padding: 2%;">
+      <ng-container *ngFor="let entrega of arrayEntrega" style="margin: 0.5%;">
+
+        <mat-card class="mat-card-pizza mat-elevation-z4" fxFlex="0 1 calc(33.3% - 22px)"
+        fxFlex.lt-md="0 1 calc(50% - 22px)"
+        fxFlex.lt-sm="100%">
+
+          <mat-card-header>
+            <div mat-card-avatar class="avatar pizza-header-image"></div>
+            <mat-card-title>{{ entrega.name }}</mat-card-title>
+            <mat-card-subtitle>{{ entrega.ingredients }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <div class="img-pizza">
+            <img mat-card-image src="{{ entrega.img }}" 
+            alt="Entrega {{ entrega.name }}">
+          </div>
+          
+          <p class="price">
+            {{ entrega.price | currency: 'ARS' }}
+          </p>
+
+          <mat-card-actions class="btn">
+            <button mat-raised-button class="bg-yellow color-gray" (click)="addBebidaPedido(entrega.id)">
+              <mat-icon class="color-pink">add_circle</mat-icon>
+              Adicionar al Pedido
+            </button>
+          </mat-card-actions>
+
+        </mat-card>
+
+      </ng-container>
+    </div>
+
+  </mat-tab>
   
 </mat-tab-group>
 
