@@ -31,6 +31,10 @@ export class ProdutosService {
   public getBebida(): Observable<any>{
     return this.db.collection('Bebida').snapshotChanges()
    }
+
+   public getEntrega():Observable<any>{
+    return this.db.collection('Entrega').snapshotChanges()
+   }
     
 }
 
